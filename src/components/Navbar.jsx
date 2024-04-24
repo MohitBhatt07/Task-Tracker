@@ -6,6 +6,7 @@ import { DarkModeContext } from "../context/DarkModeContext";
 const Navbar = ({ setIsModal }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
+  
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };

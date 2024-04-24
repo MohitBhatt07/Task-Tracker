@@ -6,12 +6,10 @@ const BackToTopButton = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      setIsVisible(scrollY > 200); // Show button after scrolling 200px
+      setIsVisible(scrollY > 200);
     };
 
     window.addEventListener('scroll', handleScroll);
-
-    // Cleanup function to remove event listener on unmount
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 

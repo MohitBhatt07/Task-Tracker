@@ -3,17 +3,17 @@
 @tailwind utilities;
 
 
-/* .delete-toast{
+.delete-toast{
   border: 1px red solid;
   filter: drop-shadow(2px 4px 4px red);
-  
+  color: red;
   @media only screen and (max-width: 600px) {
     display: flex;
     justify-content: center;
     align-items: center;  
   }
 }
-
+/*
 .drag-drop ul{
   background-color: rgb(141, 83, 250);
 

@@ -16,9 +16,7 @@ import Pagination from "./components/Pagination";
 function App() {
   const { isDarkMode } = useContext(DarkModeContext);
   const [isModal , setIsModal]= useState(false);
-  // const [tasks, setTasks] = useState([]);
-  // const [filteredTasks, setFilteredTasks] = useState(tasks);
-  
+
 
   const modalCloseHandler = ()=>{
     setIsModal(false);

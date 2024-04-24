@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { createContext, useState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 export const TaskContext = createContext();
 
@@ -18,7 +19,7 @@ export const TaskProvider = ({ children }) => {
         const data = response.data;
         setTasks(data);
       } catch (error) {
-        console.error("Error fetching tasks:", error);
+        toast.error("Error in fetching tasks ");
       }
     };
 
@@ -37,6 +38,10 @@ export const TaskProvider = ({ children }) => {
 
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
+    toast("Task deleted" ,{
+      className : "delete-toast",
+      hideProgressBar : true,
+    });
   };
 
   const toggleTaskCompletion = (id) => {
