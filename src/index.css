@@ -1,8 +1,13 @@
 
 :root {
-  --primary: rgb(36, 16, 216);
-  --secondary: rgb(207, 224, 255);
+  
+  --secondary: rgb(143, 143, 143);
+
 }
+
+
+
+
 /* .transitioning {
   transition: background-color 0.3s ease-in-out;
 } */

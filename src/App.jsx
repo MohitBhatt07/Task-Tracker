@@ -17,12 +17,13 @@ function App() {
 
   return ( 
     <TaskProvider>
-      <div className="overflow-hidden overflow-y-scroll h-screen transition-colors duration-500 dark:bg-slate-700">
+      <div className="overflow-x-hidden transition-colors duration-500 dark:bg-slate-700 bg-slate-200">
         <Navbar setIsModal = {setIsModal}/>
         <AddTaskModal onClose={modalCloseHandler} isOpen={isModal} />
         <TaskList />
-        <BackToTopButton />
+        
       </div>
+      <BackToTopButton />
       </TaskProvider>
     
   );

@@ -6,11 +6,12 @@ import TaskFilter from "./TaskFilter";
 import { TaskContext } from "../context/TaskContext";
 import { AiOutlineCheckCircle, AiOutlineDelete } from "react-icons/ai";
 import Loader from "./Loader";
+import BackToTopButton from "./BackToTopButton";
 
 function TaskList() {
   const { tasks, isLoading, handleOnDragEnd,deleteTask :handleDeleteTask ,toggleTaskCompletion : handleMarkCompleted , filterOption } =
     useContext(TaskContext);
-  console.log(tasks.filter((task) => task.completed === false));
+
   let newTasks = [];
   if (filterOption === "completed")
     newTasks = tasks.filter((task) => task.completed === true);
@@ -19,13 +20,14 @@ function TaskList() {
   else newTasks = tasks;
 
   return (
-    <div className="mt-24 flex-col justify-center items-center space-y-4 w-screen">
+    <div className="mt-24 flex-col  justify-center items-center space-y-4 w-screen relative">
+      
       <h1 className="dark:bg-indigo-800 bg-purple-800 text-white w-fit m-auto px-5 rounded-lg shadow-lg shadow-cyan-200 text-3xl font-serif ml-10">
         TASK LIST
       </h1>
       <TaskFilter />
-      <h1 className="dark:bg-indigo-800 bg-purple-800  mx-[10%] rounded-md text-center text-gray-200  font-bold" >Total tasks - {newTasks.length}</h1>
-      <div className="drag-drop flex justify-center items-center w-screen">
+      <h1 className="dark:bg-indigo-800 bg-purple-800  mx-[10%] rounded-md text-center text-gray-200  font-bold" >{filterOption.toUpperCase()} TASKS - {newTasks.length}</h1>
+      <div className=" drag-drop flex justify-center items-center w-screen">
 
         {filterOption === "all" ? (
           <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -72,6 +74,7 @@ function TaskList() {
           </ul>
         )}
       </div>
+      <BackToTopButton/>
     </div>
   );
 }

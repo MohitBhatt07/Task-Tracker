@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FaArrowAltCircleUp, FaArrowUp } from "react-icons/fa";
 
 const BackToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -19,12 +20,12 @@ const BackToTopButton = () => {
 
   return (
     <button
-      className={`fixed bottom-10 right-10 bg-indigo-700 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full shadow-md transition duration-300 ease-in-out ${
+      className={`fixed bottom-10 left-5 bg-indigo-700 hover:bg-indigo-600 text-white font-bold py-4 px-4 rounded-full shadow-md transition duration-300 ease-in-out ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
       onClick={scrollToTop}
     >
-      Back to Top
+        <FaArrowUp  className='' size={30}/>
     </button>
   );
 };

@@ -6,7 +6,7 @@ const TaskFilter = () => {
   const { filterOption, handleFilterChange } = useContext(TaskContext);
 
   return (
-    <div className="flex items-center justify-center mb-4">
+    <div className=" flex items-center justify-center mb-4">
       <div className="flex border-indigo-500   rounded-lg shadow-lg shadow-indigo-300">
         <button
           className={`flex items-center px-4 py-2 rounded-l-md ${

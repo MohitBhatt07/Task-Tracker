@@ -12,7 +12,7 @@ const Navbar = ({ setIsModal }) => {
   };
 
   return (
-    <nav className="fixed w-full z-10 top-0 transition-colors duration-300 dark:bg-indigo-800 bg-purple-800">
+    <nav className="fixed w-full z-10 top-0 right-0 transition-colors duration-300 dark:bg-indigo-800 bg-purple-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -54,7 +54,7 @@ const Navbar = ({ setIsModal }) => {
           </div>
           <div className="-mr-2 flex md:hidden">
             <div
-              className="p-2 md:hidden bg-indigo-500 cursor-pointer rounded-md"
+              className="p-2 md:hidden dark:bg-indigo-500 bg-purple-500 hover:dark:bg-indigo-700 hover:bg-purple-700cursor-pointer rounded-md"
               onClick={toggleDarkMode}
             >
               {isDarkMode ? (
@@ -66,7 +66,7 @@ const Navbar = ({ setIsModal }) => {
             <button
               onClick={toggleNavbar}
               type="button"
-              className="bg-indigo-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-800 focus:ring-white transition duration-300"
+              className="dark:bg-indigo-500 ml-2 bg-purple-500 hover:dark:bg-indigo-700  inline-flex items-center justify-center p-2 rounded-md text-white  dark:text-gray-300 hover:text-white hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-800 focus:ring-white transition duration-300"
               aria-controls="mobile-menu"
               aria-expanded="false"
             >
