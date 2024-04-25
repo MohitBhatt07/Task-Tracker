@@ -1,3 +1,14 @@
+
+:root {
+  --primary: rgb(36, 16, 216);
+  --secondary: rgb(207, 224, 255);
+}
+/* .transitioning {
+  transition: background-color 0.3s ease-in-out;
+} */
+/* @dark {
+  @apply transitioning;
+} */
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

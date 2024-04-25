@@ -9,11 +9,9 @@ import { TaskContext, TaskProvider } from "./context/TaskContext.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <DarkModeProvider>
-      <TaskProvider>
-        <ToastContainer autoClose={1000} draggable />
+      <ToastContainer autoClose={1000} draggable />
 
-        <App />
-      </TaskProvider>
+      <App />
     </DarkModeProvider>
   </React.StrictMode>
 );

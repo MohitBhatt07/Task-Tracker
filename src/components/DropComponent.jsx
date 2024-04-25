@@ -2,10 +2,11 @@ import React, { useContext, useEffect, useState } from 'react'
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { AiOutlineCheckCircle, AiOutlineDelete , AiOutlineDrag } from "react-icons/ai";
 import { TaskContext } from '../context/TaskContext';
+import Loader from './Loader';
 
 
-const DropComponent = ({ }) => {
-  const { tasks, deleteTask :handleDeleteTask, toggleTaskCompletion :handleMarkCompleted } = useContext(TaskContext);
+const DropComponent = ({tasks }) => {
+  const {  deleteTask :handleDeleteTask, isLoading ,toggleTaskCompletion :handleMarkCompleted } = useContext(TaskContext);
 
   const [enabled , setEnabled ]=  useState(false);
   useEffect(() => {
@@ -21,7 +22,7 @@ const DropComponent = ({ }) => {
     return null;
   }
   return (
-    <Droppable droppableId="task-list">
+    isLoading ? <Loader/> :<Droppable droppableId="task-list">
         {(provided) => (
           <ul
             {...provided.droppableProps}
@@ -32,14 +33,14 @@ const DropComponent = ({ }) => {
               <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
                 {(provided, snapshot) => (
                   <li
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps} 
+                   {...provided.draggableProps}
+                  {...provided.dragHandleProps} 
                     ref={provided.innerRef}
-                    className={`task min-h-30 dark:bg-gray-800 px-4 py-2  dark:hover:text-black dark:hover:bg-gray-200 flex justify-between items-center rounded-md max-[600px]:flex-col max-[600px]:gap-2 hover:bg-gray-200 transition duration-200 ease-in-out ${
+                    className={`task min-h-30 dark:bg-gray-800 px-4 py-2  dark:hover:text-black dark:hover:bg-gray-200 flex justify-between items-center rounded-md max-[600px]:flex-col max-[600px]:gap-2 hover:bg-gray-200  ${
                       task.completed ? "bg-green-100 dark:bg-green-200 dark:text-gray-700"  : "dark:text-white bg-white"
                     } ${
                       snapshot.isDragging
-                        ? "bg-orange-400 dark:bg-orange-200 dark:text-gray-600 shadow-lg "
+                        ? "bg-orange-300 dark:bg-orange-200 dark:text-gray-600 shadow-lg "
                         : ""
                     }`}
                   >

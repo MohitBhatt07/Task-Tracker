@@ -7,23 +7,27 @@ export const TaskContext = createContext();
 export const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
   const [filterOption, setFilterOption] = useState("all");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [tasksPerPage] = useState(10);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    
     const fetchTasks = async () => {
+      setIsLoading(true);
       try {
         const response = await axios.get(
           "https://jsonplaceholder.typicode.com/todos"
         );
         const data = response.data;
-        setTasks(data);
+        setTasks(data.slice(0,40));
+        
       } catch (error) {
         toast.error("Error in fetching tasks ");
       }
+      setIsLoading(false);
     };
 
     fetchTasks();
+    
   }, []);
 
   const addTask = (title) => {
@@ -54,11 +58,8 @@ export const TaskProvider = ({ children }) => {
 
   const handleFilterChange = (option) => {
     setFilterOption(option);
-    setCurrentPage(1);
   };
 
-  const indexOfLastTask = currentPage * tasksPerPage;
-  const indexOfFirstTask = indexOfLastTask - tasksPerPage;
 
   const filteredTasks =
     filterOption === "all"
@@ -67,17 +68,11 @@ export const TaskProvider = ({ children }) => {
           (task) => task.completed === (filterOption === "completed")
         );
 
-  const currentTasks = filteredTasks.slice(indexOfFirstTask, indexOfLastTask);
-
-  const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   const handleOnDragEnd = (result) => {
     if (!result.destination) return;
-
-    const items = Array.from(currentTasks);
+    // console.log(result);
+    console.log("from :" + result.source.index + " to " + result.destination.index);
+    const items = Array.from(tasks);
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
 
@@ -87,20 +82,15 @@ export const TaskProvider = ({ children }) => {
   return (
     <TaskContext.Provider
       value={{
-        tasks: currentTasks,
+        tasks: tasks,
         setTasks,
         addTask,
         deleteTask,
         toggleTaskCompletion,
         filterOption,
         handleFilterChange,
-        currentPage,
-        tasksPerPage,
-        indexOfFirstTask,
-        indexOfLastTask,
-        totalTasks: filteredTasks.length,
-        paginate,
-        handleOnDragEnd,
+        isLoading,
+        handleOnDragEnd ,
       }}
     >
       {children}
