@@ -6,22 +6,6 @@ import { TaskContext } from "../context/TaskContext";
 
 const AddTaskModal = ({ isOpen, onClose}) => {
   const [newTaskTitle, setNewTaskTitle] = useState("");
-  // const {tasks,setTasks} = useContext(DarkModeContext);
-
-  // const handleAddTask = (event) => {
-  //   event.preventDefault(); 
-  //   if (!newTaskTitle.trim()) return; 
-  //   const newTaskId = Math.max(...tasks.map((task) => task.id)) + 1;
-  //   const newTask = {id : newTaskId , title : newTaskTitle , completed :false ,userId :  1};
-  //   console.log(newTask);
-  //   setTasks([
-  //     ...tasks,
-  //     newTask
-  //   ]);
-  //   setNewTaskTitle("");
-  //   onClose();
-  //   toast.success("Task added successfully");
-  // };
   const {addTask} = useContext(TaskContext);
   const handleAddTask = (event)=>{
     event.preventDefault();
