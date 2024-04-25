@@ -40,7 +40,7 @@ const DropComponent = ({tasks }) => {
                       task.completed ? "bg-green-100 dark:bg-green-200 dark:text-gray-700"  : "dark:text-white bg-white"
                     } ${
                       snapshot.isDragging
-                        ? "bg-orange-200 dark:bg-orange-200 dark:text-gray-600 shadow-lg "
+                        ? "bg-yellow-200 dark:bg-orange-200 dark:text-gray-600 shadow-lg "
                         : ""
                     }`}
                   >
